@@ -49,6 +49,76 @@ namespace CbOAlgorithms
             return lcmWithoutPruning;
         }
 
+        ///// <summary>
+        ///// Реализация алгоритма LCM (with pruning)
+        ///// </summary>
+        ///// <param name="context"></param>
+        ///// <returns></returns>
+        //public static List<Concept> LCMWithPruning(Context context)
+        //{
+        //    var lcmWithoutPruning = new List<Concept>();
+        //    GenerateFromLCMWithPruning(context, lcmWithoutPruning, context.G, context.GaluaOperatorUp(context.G), 0);
+        //    return lcmWithoutPruning;
+        //}
+
+        //private static void GenerateFromLCMWithPruning(Context context, List<Concept> lcmWithoutPruning, List<string> A, List<string> B, int y)
+        //{
+        //    var nSum = new List<string>();
+        //    foreach (var x in A)
+        //    {
+        //        var xForGalua = new List<string>() { x };
+        //        nSum.AddRange(context.GaluaOperatorUp(xForGalua).ToArray());
+        //    }
+        //    var N = nSum.Distinct().Except(B).ToList();
+        //    var K = context;
+        //    var frequencies = Frequencies(K, N);
+
+        //    RemoveRulesByRightSide(y);
+
+        //    foreach (var i in N)
+        //    {
+        //        if (context.M.IndexOf(i) < y)
+        //        {
+        //            if (frequencies[i] == A.Count)
+        //            {
+        //                return;
+        //            }
+        //        }
+        //    }
+
+        //    var toRemoveFromN = new List<string>();
+        //    foreach (var i in N)
+        //    {
+        //        if (context.M.IndexOf(i) + 1 > y)
+        //        {
+        //            if (frequencies[i] == A.Count)
+        //            {
+        //                B.Add(i);
+        //                B.Distinct();
+        //                toRemoveFromN.Add(i);
+        //                //N.Remove(i);
+        //            }
+        //        }
+        //    }
+        //    N.Except(toRemoveFromN);
+
+        //    lcmWithoutPruning.Add(new Concept(A, B));
+
+        //    foreach (var i in N.OrderByDescending(s => s))
+        //    {
+        //        var newK = CreateConditionalDb(K, A, N, y, B);
+        //        var listI = new List<string>();
+        //        if (context.M.IndexOf(i) + 1 > y)
+        //        {
+        //            listI.Add(i);
+        //            B.Add(i);
+        //            GenerateFromLCMWithoutPruning(newK, lcmWithoutPruning, newK.GaluaOperatorFromObjectToSign(listI), B, context.M.IndexOf(i) + 1);
+        //            B.Clear();
+        //        }
+        //    }
+        //    return;
+        //}
+
         private static void GenerateFromLCMWithoutPruning(Context context, List<Concept> lcmWithoutPruning, List<string> A, List<string> B, int y)
         {
             var nSum = new List<string>();
@@ -125,14 +195,14 @@ namespace CbOAlgorithms
                 }
             }
 
-            //b
-            // remove full
-            var beforeDeletedM = K.M;
-            K.M = K.M.Except(K.GaluaOperatorUp(K.G)).ToList();
-            foreach(var i in beforeDeletedM.Except(K.M).OrderByDescending(e => e))
-            {
-                K.Table.ForEach(x => x.RemoveAt(beforeDeletedM.IndexOf(i)));
-            }
+            ////b
+            //// remove full
+            //var beforeDeletedM = K.M;
+            //K.M = K.M.Except(K.GaluaOperatorUp(K.G)).ToList();
+            //foreach(var i in beforeDeletedM.Except(K.M).OrderByDescending(e => e))
+            //{
+            //    K.Table.ForEach(x => x.RemoveAt(beforeDeletedM.IndexOf(i)));
+            //}
 
             //remove empty
             foreach (var m in K.M.OrderByDescending(e => e))

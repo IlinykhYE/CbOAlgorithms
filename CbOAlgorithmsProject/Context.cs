@@ -25,7 +25,6 @@ namespace CbOAlgorithms
             var ext = filePath.Substring(filePath.LastIndexOf('.') + 1);
             switch (ext)
             {
-                case "xlsx":
                 case "xls":
                 {
                     Application excel = null;
@@ -74,7 +73,71 @@ namespace CbOAlgorithms
 
                     break;
                 }
-                case "csv":
+                case "xlsx":
+                    {
+                        Application data = null;
+                        Workbook workbook = null;
+
+                        try
+                        {
+                            data = new Application();
+                            workbook = data.Workbooks.Open(filePath);
+                            var sheet = (Worksheet)workbook.Sheets[1];
+                            sheet.Columns.ClearFormats();
+                            sheet.Rows.ClearFormats();
+
+                            var rowCount = sheet.UsedRange.Rows.Count;
+                            var colCount = sheet.UsedRange.Columns.Count;
+                            for (int g = 1; g < rowCount; g++)
+                            {
+                                G.Add(g.ToString());
+                            }
+                            char lastChar = (char)((int)'А'+74);
+                            for (char c = 'А'; c < lastChar; c++)
+                            {
+                                M.Add(c.ToString());
+                            }
+
+                            if (G.Contains("")) throw new Exception("In column of objects the cell is empty");
+                            if (M.Contains("")) throw new Exception("In row of sign the ell is empty");
+
+                            var arrData = (object[,])sheet.Range[sheet.Cells[1,1], sheet.Cells[rowCount, colCount]].Value;
+
+                            var flag = 0;
+                            for (var i = 1; i < rowCount; i++)
+                            {
+                                Table.Add(new List<bool>());
+
+                                for (var j = 1; j < 75; j++)
+                                {
+                                    for (var k = 1; k < colCount+1; k++)
+                                    {
+                                        if (j.ToString() == arrData[i,k].ToString())
+                                        {
+                                            flag = 1;
+                                            Table[i - 1].Add(true);
+                                            break;
+                                        }
+                                    }
+                                    if (flag != 1)
+                                    {
+                                        Table[i - 1].Add(false);
+                                    }
+                                    flag = 0;
+                                }
+                            }
+                            
+
+                            workbook.Close(false);
+                            data.Quit();
+                        }
+                        catch (Exception)
+                        {
+                            workbook?.Close(false);
+                            data?.Quit();
+                            throw new Exception("Incorrect file format!");
+                        }
+                    }
                     break;
             }
         }

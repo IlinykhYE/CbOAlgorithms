@@ -25,7 +25,7 @@ namespace CbOAlgorithms.GUI
         public Main()
         {
             InitializeComponent();
-            openFileDialog.Filter = "Excel Worksheets 2007(*.xlsx) | *.xlsx|Excel Worksheets 2003(*.xls) | *.xls";
+            //openFileDialog.Filter = "Excel Worksheets 2007(*.xlsx) | *.xlsx|Excel Worksheets 2003(*.xls) | *.xls";
 
             //Настройки диалогового окна для сохранения новго файла
             saveFileDialog.AddExtension = true;
@@ -52,7 +52,7 @@ namespace CbOAlgorithms.GUI
         public Main(Context context)
         {
             InitializeComponent();
-            openFileDialog.Filter = "Excel Worksheets 2007(*.xlsx) | *.xlsx|Excel Worksheets 2003(*.xls) | *.xls";
+            //openFileDialog.Filter = "Excel Worksheets 2007(*.xlsx) | *.xlsx|Excel Worksheets 2003(*.xls) | *.xls";
 
             //Настройки диалогового окна для сохранения новго файла
             saveFileDialog.AddExtension = true;
