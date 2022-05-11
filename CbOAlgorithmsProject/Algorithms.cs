@@ -158,17 +158,20 @@ namespace CbOAlgorithms
             N.Except(toRemoveFromN);
 
             lcmWithoutPruning.Add(new Concept(A, B));
-
             foreach (var i in N.OrderByDescending(s => s))
             {
-                var newK = CreateConditionalDb(K, A, N, y, B);
-                var listI = new List<string>();
-                if (context.M.IndexOf(i)+1 > y)
+                if (K.M.Count != 0)
                 {
-                    listI.Add(i);
-                    B.Add(i);
-                    GenerateFromLCMWithoutPruning(newK, lcmWithoutPruning, newK.GaluaOperatorFromObjectToSign(listI), B, context.M.IndexOf(i) + 1);
-                    B.Clear();
+                    var newK = CreateConditionalDb(K, A, N, y, B);
+
+                    var listI = new List<string>();
+                    if (context.M.IndexOf(i) + 1 > y)
+                    {
+                        listI.Add(i);
+                        B.Add(i);
+                        GenerateFromLCMWithoutPruning(newK, lcmWithoutPruning, newK.GaluaOperatorFromObjectToSign(listI), B, context.M.IndexOf(i) + 1);
+                        B.Clear();
+                    }
                 }
             }
             return;
@@ -273,7 +276,7 @@ namespace CbOAlgorithms
                            select x).ToDictionary(x => x.Key, x => x.Value);
             foreach (var s in copyDicForDistinct)
             {
-                var str = new string(s.Key.Distinct().ToArray());
+                var str = new string(s.Key.Remove(s.Key.Length / 2).ToArray());
                 if (!str.Equals(s.Key))
                 {
                     dic.Add(str, s.Value);
@@ -283,48 +286,53 @@ namespace CbOAlgorithms
 
             // e. Add interior intersections
             var eDic = new Dictionary<string, List<bool>>();
-            
-            foreach (var i in dic)
+            if (removeDic.Count != 0)
             {
-                foreach(var j in removeDic.Where(x => i.Key.Contains(x.Key)))
+                if (removeDic["1"].Count != 0)
                 {
-                    foreach (var l in removeDic.Where(x => i.Key.Contains(x.Key)))
+                    foreach (var i in dic)
                     {
-                        if ((l.Key != j.Key && j.Key.CompareTo(l.Key) < 0) || (i.Key.Count() == 1))
+                        foreach (var j in removeDic.Where(x => i.Key.Contains(x.Key)))
                         {
-                            var listBool = new List<bool>();
-                            if (i.Key.Count() == 1)
+                            foreach (var l in removeDic.Where(x => i.Key.Contains(x.Key)))
                             {
-                                var copyRemoveDic = (from x in removeDic
-                                                     select x).ToDictionary(x => x.Key, x => x.Value);
-                                eDic.Add(i.Key, copyRemoveDic[l.Key]);
-                            }
-                            else
-                            {
-                                for (var a = 0; a < removeC.Count; a++)
+                                if ((l.Key != j.Key && j.Key.CompareTo(l.Key) < 0) || (i.Key.Count() == 1))
                                 {
-                                    if (j.Value[a] == l.Value[a])
+                                    var listBool = new List<bool>();
+                                    if (i.Key.Count() == 1)
                                     {
-                                        listBool.Add(true);
+                                        var copyRemoveDic = (from x in removeDic
+                                                             select x).ToDictionary(x => x.Key, x => x.Value);
+                                        eDic.Add(i.Key, copyRemoveDic[l.Key]);
                                     }
                                     else
                                     {
-                                        listBool.Add(false);
+                                        for (var a = 0; a < removeC.Count; a++)
+                                        {
+                                            if (j.Value[a] == l.Value[a])
+                                            {
+                                                listBool.Add(true);
+                                            }
+                                            else
+                                            {
+                                                listBool.Add(false);
+                                            }
+                                        }
+                                        if (!eDic.ContainsKey(i.Key))
+                                        {
+                                            eDic.Add(i.Key, listBool);
+                                        }
+                                        else
+                                        {
+                                            eDic.Remove(i.Key);
+                                            eDic.Add(i.Key, listBool);
+                                        }
                                     }
                                 }
-                                if (!eDic.ContainsKey(i.Key))
-                                {
-                                    eDic.Add(i.Key, listBool);
-                                }
-                                else
-                                {
-                                    eDic.Remove(i.Key);
-                                    eDic.Add(i.Key, listBool);
-                                }
                             }
+
                         }
                     }
-                        
                 }
             }
 

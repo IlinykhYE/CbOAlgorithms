@@ -30,5 +30,10 @@ namespace CbOAlgorithms
                 || !int.TryParse(attrCountTextBox.Text, out testNumber)) okButton.Enabled = false;
             else okButton.Enabled = true;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

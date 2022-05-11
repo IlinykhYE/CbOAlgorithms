@@ -47,10 +47,8 @@
             this.toolsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.LCM = new System.Windows.Forms.Button();
             this.buildConceptButton = new System.Windows.Forms.Button();
-            this.removeObjectButton = new System.Windows.Forms.Button();
             this.CbOV1 = new System.Windows.Forms.Button();
             this.editModelCheckBox = new System.Windows.Forms.CheckBox();
-            this.CreateGraph = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.importContextBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -231,7 +229,7 @@
             this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellEndEdit);
             this.dataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.CellMouseClick);
-            this.dataGridView.SelectionChanged += new System.EventHandler(this.CellSelectionChanged);
+            /*this.dataGridView.SelectionChanged += new System.EventHandler(this.CellSelectionChanged)*/;
             this.dataGridView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPressWithSelectedCell);
             // 
             // latticeTextBox
@@ -255,10 +253,8 @@
             this.toolsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 411F));
             this.toolsTableLayoutPanel.Controls.Add(this.LCM, 2, 0);
             this.toolsTableLayoutPanel.Controls.Add(this.buildConceptButton, 1, 4);
-            this.toolsTableLayoutPanel.Controls.Add(this.removeObjectButton, 2, 4);
             this.toolsTableLayoutPanel.Controls.Add(this.CbOV1, 1, 0);
             this.toolsTableLayoutPanel.Controls.Add(this.editModelCheckBox, 0, 0);
-            this.toolsTableLayoutPanel.Controls.Add(this.CreateGraph, 0, 4);
             this.toolsTableLayoutPanel.Location = new System.Drawing.Point(4, 479);
             this.toolsTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.toolsTableLayoutPanel.Name = "toolsTableLayoutPanel";
@@ -297,17 +293,6 @@
             this.buildConceptButton.UseVisualStyleBackColor = true;
             this.buildConceptButton.Click += new System.EventHandler(this.OnClickBuildConceptButton);
             // 
-            // removeObjectButton
-            // 
-            this.removeObjectButton.Enabled = false;
-            this.removeObjectButton.Location = new System.Drawing.Point(702, 78);
-            this.removeObjectButton.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.removeObjectButton.Name = "removeObjectButton";
-            this.removeObjectButton.Size = new System.Drawing.Size(245, 42);
-            this.removeObjectButton.TabIndex = 5;
-            this.removeObjectButton.Text = "FCbO";
-            this.removeObjectButton.UseVisualStyleBackColor = true;
-            // 
             // CbOV1
             // 
             this.CbOV1.Location = new System.Drawing.Point(401, 12);
@@ -331,18 +316,6 @@
             this.editModelCheckBox.Text = "Edit";
             this.editModelCheckBox.UseVisualStyleBackColor = true;
             this.editModelCheckBox.CheckedChanged += new System.EventHandler(this.EditModeChanged);
-            // 
-            // CreateGraph
-            // 
-            this.CreateGraph.Enabled = false;
-            this.CreateGraph.Location = new System.Drawing.Point(13, 78);
-            this.CreateGraph.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.CreateGraph.Name = "CreateGraph";
-            this.CreateGraph.Size = new System.Drawing.Size(236, 42);
-            this.CreateGraph.TabIndex = 7;
-            this.CreateGraph.Text = "CreateGraph";
-            this.CreateGraph.UseVisualStyleBackColor = true;
-            this.CreateGraph.Click += new System.EventHandler(this.OnClickCreateGraphButton);
             // 
             // importContextBackgroundWorker
             // 
@@ -422,9 +395,7 @@
         private System.Windows.Forms.ToolStripMenuItem ImportContextFromFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CreateRandomContextToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel toolsTableLayoutPanel;
-        private System.Windows.Forms.Button removeObjectButton;
         private System.Windows.Forms.CheckBox editModelCheckBox;
-        private System.Windows.Forms.Button CreateGraph;
         private System.Windows.Forms.Button buildConceptButton;
         private System.Windows.Forms.Button CbOV1;
         private System.Windows.Forms.Button LCM;

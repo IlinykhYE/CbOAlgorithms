@@ -44,9 +44,10 @@
             label1.Location = new System.Drawing.Point(16, 28);
             label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(102, 16);
+            label1.Size = new System.Drawing.Size(117, 17);
             label1.TabIndex = 0;
-            label1.Text = "Count of objects";
+            label1.Text = "Count of columns";
+            label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -54,14 +55,14 @@
             label2.Location = new System.Drawing.Point(16, 75);
             label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(102, 16);
+            label2.Size = new System.Drawing.Size(94, 17);
             label2.TabIndex = 1;
-            label2.Text = "Count of objects";
+            label2.Text = "Count of rows";
             // 
             // objCountTextBox
             // 
             this.objCountTextBox.Location = new System.Drawing.Point(196, 25);
-            this.objCountTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.objCountTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.objCountTextBox.Name = "objCountTextBox";
             this.objCountTextBox.Size = new System.Drawing.Size(85, 22);
             this.objCountTextBox.TabIndex = 2;
@@ -71,7 +72,7 @@
             // attrCountTextBox
             // 
             this.attrCountTextBox.Location = new System.Drawing.Point(196, 71);
-            this.attrCountTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.attrCountTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.attrCountTextBox.Name = "attrCountTextBox";
             this.attrCountTextBox.Size = new System.Drawing.Size(85, 22);
             this.attrCountTextBox.TabIndex = 3;
@@ -83,7 +84,7 @@
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(71, 119);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(104, 27);
             this.cancelButton.TabIndex = 4;
@@ -95,7 +96,7 @@
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.okButton.Location = new System.Drawing.Point(183, 118);
-            this.okButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okButton.Margin = new System.Windows.Forms.Padding(4);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(100, 28);
             this.okButton.TabIndex = 5;
@@ -116,7 +117,7 @@
             this.Controls.Add(label2);
             this.Controls.Add(label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(314, 198);
             this.MinimumSize = new System.Drawing.Size(314, 198);

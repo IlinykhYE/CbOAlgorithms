@@ -38,7 +38,7 @@ namespace CbOAlgorithms.GUI
                 dataGridView.Rows.Clear();
                 latticeTextBox.Text = "";
                 buildConceptButton.Enabled = false;
-                CreateGraph.Enabled = false;
+                //CreateGraph.Enabled = false;
                 _lastCreateGraphButtonState = false;
                 _importFilePath = openFileDialog.FileName;
                 toolStripStatusLabel.Text = "Context import...";
@@ -72,7 +72,7 @@ namespace CbOAlgorithms.GUI
             editModelCheckBox.Enabled = true;
             editModelCheckBox.Checked = true;
             buildConceptButton.Enabled = false;
-            CreateGraph.Enabled = false;
+            //CreateGraph.Enabled = false;
             _lastCreateGraphButtonState = false;
             latticeTextBox.Text = "";
             RemoveTempFiles();
@@ -149,13 +149,13 @@ namespace CbOAlgorithms.GUI
             return text;
         }
 
-        //Событие изменения выбора ячейки
-        private void CellSelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView.CurrentCell.ColumnIndex == 0 && dataGridView.CurrentCell.RowIndex != 0 &&
-                !editModelCheckBox.Checked) removeObjectButton.Enabled = true;
-            else removeObjectButton.Enabled = false;
-        }
+        ////Событие изменения выбора ячейки
+        //private void CellSelectionChanged(object sender, EventArgs e)
+        //{
+        //    if (dataGridView.CurrentCell.ColumnIndex == 0 && dataGridView.CurrentCell.RowIndex != 0 &&
+        //        !editModelCheckBox.Checked) removeObjectButton.Enabled = true;
+        //    else removeObjectButton.Enabled = false;
+        //}
 
         //Событие изменения галочки "Режим редактирования"
         private void EditModeChanged(object sender, EventArgs e)
@@ -163,17 +163,17 @@ namespace CbOAlgorithms.GUI
             if (editModelCheckBox.Checked)
             {
                 dataGridView.EditMode = DataGridViewEditMode.EditOnKeystroke;
-                removeObjectButton.Enabled = false;
+                //removeObjectButton.Enabled = false;
                 buildConceptButton.Enabled = false;
-                _lastCreateGraphButtonState = CreateGraph.Enabled;
-                CreateGraph.Enabled = false;
+                //_lastCreateGraphButtonState = CreateGraph.Enabled;
+                //CreateGraph.Enabled = false;
             }
             else
             {
                 dataGridView.EditMode = DataGridViewEditMode.EditProgrammatically;
-                removeObjectButton.Enabled = true;
+                //removeObjectButton.Enabled = true;
                 buildConceptButton.Enabled = true;
-                CreateGraph.Enabled = _lastCreateGraphButtonState;
+                //CreateGraph.Enabled = _lastCreateGraphButtonState;
             }
         }
 
@@ -182,10 +182,10 @@ namespace CbOAlgorithms.GUI
         {
             dataGridView.Rows.Clear();
             editModelCheckBox.Checked = false;
-            removeObjectButton.Enabled = false;
+            //removeObjectButton.Enabled = false;
             buildConceptButton.Enabled = false;
-            _lastCreateGraphButtonState = CreateGraph.Enabled;
-            CreateGraph.Enabled = false;
+            //_lastCreateGraphButtonState = CreateGraph.Enabled;
+            //CreateGraph.Enabled = false;
             latticeTextBox.Text = "";
             currentContext = null;
         }
@@ -231,7 +231,7 @@ namespace CbOAlgorithms.GUI
         {
             latticeTextBox.Text = "";
             buildConceptButton.Enabled = false;
-            CreateGraph.Enabled = false;
+            //CreateGraph.Enabled = false;
             _lastCreateGraphButtonState = false;
             toolStripStatusLabel.Text = "Создание решётки...";
             progressBar.Visible = true;
@@ -451,7 +451,7 @@ namespace CbOAlgorithms.GUI
             }
 
             _lastCreateGraphButtonState = true;
-            CreateGraph.Enabled = true;
+            //CreateGraph.Enabled = true;
             toolStripStatusLabel.Text = "Done";
             progressBar.Style = ProgressBarStyle.Continuous;
             progressBar.MarqueeAnimationSpeed = 0;
@@ -493,7 +493,7 @@ namespace CbOAlgorithms.GUI
             editModelCheckBox.Enabled = true;
             editModelCheckBox.Checked = true;
             buildConceptButton.Enabled = false;
-            CreateGraph.Enabled = false;
+            //CreateGraph.Enabled = false;
             _lastCreateGraphButtonState = false;
             latticeTextBox.Text = "";
             RemoveTempFiles();
@@ -505,7 +505,7 @@ namespace CbOAlgorithms.GUI
             dataGridView.Rows.Clear();
             latticeTextBox.Text = "";
             buildConceptButton.Enabled = false;
-            CreateGraph.Enabled = false;
+            //CreateGraph.Enabled = false;
             _lastCreateGraphButtonState = false;
             _importFilePath = openFileDialog.FileName;
             toolStripStatusLabel.Text = "Импорт контекста...";
@@ -535,7 +535,7 @@ namespace CbOAlgorithms.GUI
             editModelCheckBox.Enabled = false;
             editModelCheckBox.Checked = false;
             buildConceptButton.Enabled = true;
-            CreateGraph.Enabled = false;
+            //CreateGraph.Enabled = false;
             _lastCreateGraphButtonState = false;
             latticeTextBox.Text = "";
             RemoveTempFiles();
@@ -556,7 +556,7 @@ namespace CbOAlgorithms.GUI
         {
             latticeTextBox.Text = "";
             buildConceptButton.Enabled = false;
-            CreateGraph.Enabled = false;
+            //CreateGraph.Enabled = false;
             _lastCreateGraphButtonState = false;
             toolStripStatusLabel.Text = "CbO V1";
             progressBar.Visible = true;
@@ -570,7 +570,7 @@ namespace CbOAlgorithms.GUI
         {
             latticeTextBox.Text = "";
             buildConceptButton.Enabled = true;
-            CreateGraph.Enabled = false;
+            //CreateGraph.Enabled = false;
             _lastCreateGraphButtonState = false;
             toolStripStatusLabel.Text = "LCM";
             progressBar.Visible = true;
